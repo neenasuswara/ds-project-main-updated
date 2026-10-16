@@ -1,0 +1,40 @@
+// EDIT ME: all academic content lives here.
+const student={name:"P. Neena Suswara",rollNo:"24102A030091",department:"Data Science",section:"2",subject:"Data Science",faculty:"S. Bosu Babu",designation:"ASSISTANT PROFESSOR",university:"Mohan Babu University",degree:"B.Tech",year:"3rd Year",profileImage:"assets/images/profile.jpg",
+socialLinks:null,social:{website:"YOUR_WEBSITE_URL",linkedin:"YOUR_LINKEDIN_URL",github:"YOUR_GITHUB_URL",instagram:"YOUR_INSTAGRAM_URL"}};
+const modules=[
+["Foundations of Data Science","What data science is, its lifecycle and the tools of the trade.",["Data science lifecycle","Types of data","Python ecosystem","Statistics refresher","Ethics and privacy"]],
+["Data Acquisition & Preparation","Collecting, cleaning and shaping raw data for analysis.",["Data sources and APIs","Missing values","Outliers","Encoding","Scaling"]],
+["Exploratory Data Analysis","Summarising and visualising data to uncover patterns.",["Descriptive statistics","Distributions","Correlation","Visual storytelling","Hypothesis generation"]],
+["Machine Learning Fundamentals","Core supervised and unsupervised learning algorithms.",["Regression","Classification","Clustering","Bias and variance","Feature engineering"]],
+["Model Evaluation & Applications","Measuring model quality and applying it to real problems.",["Train/test split","Cross-validation","Precision and recall","ROC and AUC","Deployment basics"]]
+].map((m,i)=>({id:String(i+1),title:m[0],description:m[1],topics:m[2],
+overview:m[1]+" This module builds the skills needed for later modules and lab work.",
+objectives:["Explain the key ideas of "+m[0].toLowerCase(),"Apply the techniques in Python","Interpret results critically"],
+concepts:m[2].slice(0,3),applications:["Business analytics","Healthcare data","Campus and student data"],
+resources:["Class notes (replace)","Official Python docs"],takeaways:["Good data beats complex models","Always validate your results"]}));
+const E=[
+["Python & NumPy Fundamentals","Array programming with NumPy.","import numpy as np",[
+["NumPy Array Creation","a=np.array([1,2,3,4])\nprint(a,a.shape)"],["Indexing & Slicing","a=np.arange(10)\nprint(a[2:7],a[::-2])"],["Broadcasting","print(np.ones((3,3))+np.array([1,2,3]))"],["Vectorized Math","x=np.linspace(0,1,5)\nprint(np.sqrt(x),x**2)"],["Statistics with NumPy","d=np.random.randn(100)\nprint(d.mean(),d.std())"],["Reshaping Arrays","print(np.arange(12).reshape(3,4).T)"],["Linear Algebra","A=np.array([[2,1],[1,3]])\nprint(np.linalg.inv(A))"]]],
+["Pandas Data Manipulation","Tabular data handling with Pandas.","import pandas as pd",[
+["Series and DataFrame","df=pd.DataFrame({'a':[1,2],'b':[3,4]})\nprint(df)"],["Selection with loc/iloc","print(df.loc[0,'a'],df.iloc[1])"],["Filtering Rows","print(df[df['a']>1])"],["GroupBy Aggregation","print(df.groupby('a')['b'].sum())"],["Merging DataFrames","print(df.merge(df,on='a'))"],["Pivot Tables","print(df.pivot_table(index='a',values='b'))"],["Time Series Basics","s=pd.Series(range(3),pd.date_range('2026-01-01',periods=3))\nprint(s.resample('2D').sum())"]]],
+["Data Cleaning","Making raw data trustworthy.","import pandas as pd",[
+["Handling Missing Values","df=pd.DataFrame({'x':[1,None,3]})\nprint(df.fillna(df.x.mean()))"],["Removing Duplicates","print(df.drop_duplicates())"],["Type Conversion","df['x']=df['x'].astype('float')"],["Outlier Detection","q1,q3=df.x.quantile([.25,.75])\nprint(q3-q1)"],["String Cleaning","s=pd.Series([' Ab ']);print(s.str.strip().str.lower())"],["Categorical Encoding","print(pd.get_dummies(pd.Series(['a','b'])))"],["Feature Scaling","print((df.x-df.x.min())/(df.x.max()-df.x.min()))"]]],
+["Exploratory Data Analysis","Understanding data before modelling.","import pandas as pd",[
+["Summary Statistics","print(df.describe())"],["Distribution Analysis","print(df.skew())"],["Correlation Analysis","print(df.corr())"],["Categorical Analysis","print(df['c'].value_counts())"],["Bivariate Analysis","print(df.groupby('c').mean())"],["Outlier Plots","df.boxplot()"],["EDA Report","print(df.info())"]]],
+["Data Visualization","Communicating insight with charts.","import matplotlib.pyplot as plt",[
+["Line Plots","plt.plot([1,2,3],[2,4,3]);plt.show()"],["Bar Charts","plt.bar(['a','b'],[3,5]);plt.show()"],["Histograms","plt.hist([1,2,2,3,3,3]);plt.show()"],["Scatter Plots","plt.scatter([1,2,3],[3,1,2]);plt.show()"],["Box Plots","plt.boxplot([1,2,3,4,10]);plt.show()"],["Heatmaps with Seaborn","import seaborn as sns\nsns.heatmap(df.corr())"],["Subplot Dashboard","fig,ax=plt.subplots(1,2);ax[0].plot([1,2]);ax[1].bar([1,2],[2,1])"]]],
+["Machine Learning Fundamentals","First models with scikit-learn.","from sklearn.model_selection import train_test_split",[
+["Train-Test Split","Xtr,Xte,ytr,yte=train_test_split(X,y,test_size=.2)"],["Linear Regression","from sklearn.linear_model import LinearRegression\nm=LinearRegression().fit(Xtr,ytr)"],["Logistic Regression","from sklearn.linear_model import LogisticRegression\nm=LogisticRegression().fit(Xtr,ytr)"],["K-Nearest Neighbors","from sklearn.neighbors import KNeighborsClassifier\nm=KNeighborsClassifier(3).fit(Xtr,ytr)"],["Decision Trees","from sklearn.tree import DecisionTreeClassifier\nm=DecisionTreeClassifier().fit(Xtr,ytr)"],["Cross-Validation","from sklearn.model_selection import cross_val_score\nprint(cross_val_score(m,X,y,cv=5))"],["Evaluation Metrics","from sklearn.metrics import accuracy_score\nprint(accuracy_score(yte,m.predict(Xte)))"]]]];
+function mkSub(eid,i,name,code,imp,en){const L="ABCDEFG"[i];return{id:eid.replace(/^0/,"")+L,name,youtube:"https://www.youtube.com/results?search_query="+encodeURIComponent(name+" Python tutorial"),github:"https://github.com/search?q="+encodeURIComponent(name+" Python"),
+aim:"To learn and implement "+name.toLowerCase()+" as part of "+en+".",problemStatement:"Apply "+name.toLowerCase()+" to a small sample dataset and verify the output.",
+tools:["Python","Jupyter Notebook","NumPy","Pandas"],explanation:name+" is a core technique in "+en.toLowerCase()+". Start with a tiny example, inspect the result, then scale up.",
+procedure:["Import required libraries","Create the dataset","Inspect the data","Apply the operation","Analyze the output","Validate the result"],
+code:(imp?imp+"\n":"")+code,input:"A small in-memory sample dataset created in the code.",result:"Run the code in Jupyter and paste your output here.",
+analysis:"Compare the output with what you expected and explain any differences.",conclusion:"You can now apply "+name.toLowerCase()+" and check that it works."}}
+const experiments=E.map((e,k)=>{const id="0"+(k+1);return{id,name:e[0],description:e[1],youtube:"https://www.youtube.com/results?search_query="+encodeURIComponent(e[0]+" Python tutorial"),github:"https://github.com/search?q="+encodeURIComponent(e[0]+" Python"),
+overview:e[1]+" This experiment has seven guided parts, 'A' to 'G'.",aim:"To perform "+e[0].toLowerCase()+" on sample data.",problemStatement:"Use real-style data to practise "+e[0].toLowerCase()+".",
+dataset:"Small sample datasets (replace with your own CSV).",methodology:["Load data","Apply the technique","Inspect results","Document findings"],analysis:"Interpret outputs from each sub-experiment.",results:"Add your final observations here.",
+architecture:["Dataset","Data Collection","Data Cleaning","Preprocessing","Feature Engineering","Analysis / Model","Results"],
+subExperiments:e[3].map((s,i)=>mkSub(id,i,s[0],s[1],e[2],e[0]))}});
+const tools=[["Python","https://www.python.org"],["Jupyter Notebook","https://jupyter.org"],["NumPy","https://numpy.org"],["Pandas","https://pandas.pydata.org"],["Matplotlib","https://matplotlib.org"],["Seaborn","https://seaborn.pydata.org"],["Scikit-learn","https://scikit-learn.org"],["Power BI","https://powerbi.microsoft.com"],["SQL","https://www.w3schools.com/sql"],["GitHub","https://github.com"],["Google Colab","https://colab.research.google.com"]];
+window.student=student;window.modules=modules;window.experiments=experiments;window.tools=tools;
